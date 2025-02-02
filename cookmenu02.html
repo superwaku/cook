@@ -27,12 +27,12 @@
     </style>
 </head>
 <body>
-    <button onclick="chooseRecipe()">今日の料理は何にしようかな？</button>
+    <button onclick="chooseRecipe()">今日の夕飯は何にしようかな？</button>
     <p id="recipe"></p>
 
     <script>
         function chooseRecipe() {
-            const recipes = ["カレーライス", "ハンバーグ", "オムライス", "肉じゃが", "焼き魚", "親子丼", "パスタ", "シチュー", "唐揚げ", "生姜焼き"];
+            const recipes = ["カレーライス", "ハンバーグ", "ししゃもフライ", "肉じゃが", "ビビンバ", "親子丼", "まぜのっけ", "サンマ", "唐揚げ", "ゴーヤチャンプル"];
             const randomRecipe = recipes[Math.floor(Math.random() * recipes.length)];
             document.getElementById("recipe").innerText = randomRecipe;
         }
