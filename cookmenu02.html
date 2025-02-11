@@ -33,15 +33,19 @@
     <script>
         const meatRecipes = ["カレーライス", "ハンバーグ", "肉じゃが", "ビビンバ", "親子丼", "唐揚げ", "ゴーヤチャンプル", "まぜのっけ"];
         const fishRecipes = ["ししゃもフライ", "サンマ", "たい", "アジフライ", "ぶり"];
+        const friedFoods = ["唐揚げ", "ししゃもフライ", "アジフライ"];
         let isMeatTurn = true; // 最初は肉料理から
+        let lastRecipe = "";
 
         function chooseRecipe() {
             let recipe;
-            if (isMeatTurn) {
-                recipe = meatRecipes[Math.floor(Math.random() * meatRecipes.length)];
-            } else {
-                recipe = fishRecipes[Math.floor(Math.random() * fishRecipes.length)];
-            }
+            let recipeList = isMeatTurn ? meatRecipes : fishRecipes;
+            
+            do {
+                recipe = recipeList[Math.floor(Math.random() * recipeList.length)];
+            } while (friedFoods.includes(recipe) && friedFoods.includes(lastRecipe));
+            
+            lastRecipe = recipe;
             isMeatTurn = !isMeatTurn; // 次は反対の料理にする
             document.getElementById("recipe").innerText = recipe;
         }
