@@ -10,7 +10,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            flex-direction: column; /* ボタンと結果を縦に並べる */　
+            flex-direction: column;
         }
         button {
             font-size: 50px;
@@ -21,8 +21,8 @@
             cursor: pointer;
         }
         #recipe {
-            margin-top: 20px; /* ボタンとの間に余白を追加 */
-            font-size: 50px; /* 文字を大きくする */
+            margin-top: 20px;
+            font-size: 50px;
         }
     </style>
 </head>
@@ -31,10 +31,19 @@
     <p id="recipe"></p>
 
     <script>
+        const meatRecipes = ["カレーライス", "ハンバーグ", "肉じゃが", "ビビンバ", "親子丼", "唐揚げ", "ゴーヤチャンプル", "まぜのっけ"];
+        const fishRecipes = ["ししゃもフライ", "サンマ", "たい", "アジフライ", "ぶり"];
+        let isMeatTurn = true; // 最初は肉料理から
+
         function chooseRecipe() {
-            const recipes = ["カレーライス", "ハンバーグ", "ししゃもフライ", "肉じゃが", "ビビンバ", "親子丼", "まぜのっけ", "サンマ", "唐揚げ", "ゴーヤチャンプル　え、、やだ"];
-            const randomRecipe = recipes[Math.floor(Math.random() * recipes.length)];
-            document.getElementById("recipe").innerText = randomRecipe;
+            let recipe;
+            if (isMeatTurn) {
+                recipe = meatRecipes[Math.floor(Math.random() * meatRecipes.length)];
+            } else {
+                recipe = fishRecipes[Math.floor(Math.random() * fishRecipes.length)];
+            }
+            isMeatTurn = !isMeatTurn; // 次は反対の料理にする
+            document.getElementById("recipe").innerText = recipe;
         }
     </script>
 </body>
